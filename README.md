@@ -1,3 +1,3 @@
 # Kleine Boodschap afleveringen
 
-Doorzoekbare overview of all Kleine Boodschap afleveringen
+Doorzoekbare en sorteerbare overview van alle Kleine Boodschap afleveringen.
