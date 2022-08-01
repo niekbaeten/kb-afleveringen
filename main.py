@@ -18,7 +18,7 @@ def time_struct_to_date_str(input):
 env.filters['time_struct_to_date_str'] = time_struct_to_date_str
 
 template = env.get_template("episodes.html")
-with open('kb.html', 'w', encoding='utf-8') as f:
+with open('index.html', 'w', encoding='utf-8') as f:
 	f.write(template.render(
 		entries=feed.entries
 	))
