@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Kleine Boodschap afleveringen</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/extensions/sticky-header/bootstrap-table-sticky-header.css">
+	<style>
+		.buttons-toolbar {
+			float: right;
+		}
+		.main-title {
+			float: left;
+			vertical-align: center;
+			height: 38px;
+		}
+		.main-title h1 {
+			font-size: 28px;
+			margin: 0 10px;
+		}
+	</style>
+</head>
+<body class="m-2">
+	<div class="buttons-toolbar">
+	</div>
+	<div class="main-title">
+	  <h1>Alle <a href="https://kleineboodschap.com/" target="_blank">Kleine Boodschap</a> afleveringen</h1>
+	</div>
+	<table 
+		data-classes="table table-striped"
+		data-toggle="table"
+		data-buttons-align="left"
+		data-search="true"
+		data-search-accent-neutralise="true"
+		data-search-align="left"
+		data-search-highlight="true"
+		data-show-columns="true"
+		data-sticky-header="true"
+		data-sort-name="episode"
+		data-sort-order="desc"
+		data-show-button-text="true"
+		data-thead-classes="table-light"
+		data-buttons-toolbar=".buttons-toolbar"
+	>
+	<thead>
+		<tr>
+			<th data-field="episode" data-sortable="true">Episode</th>
+			<th data-field="title">Title</th>
+			<th data-field="subtitle">Subtitle</th>
+			<th data-field="published" data-sortable="true" data-sorter="publishedSorter">Published</th>
+			<th data-field="tags" data-sortable="true">Categories</th>
+			<th data-field="description">Description</th>
+			<th data-field="duration">Duration</th>
+			<th data-field="media">Media</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for entry in entries %}
+		<tr>
+			<td>{{ entry.itunes_episode }}</td>
+			<td><a href="{{ entry.link }}" target="_blank">{{ entry.itunes_title }}</a></td>
+			<td>{{ entry.subtitle }}</td>
+			<td>{{ entry.published_parsed | time_struct_to_date_str }}</td>
+			<td>
+				{% for tag in entry.tags %}
+				<span class="badge rounded-pill bg-primary">{{ tag.term }}</span>
+				{% endfor %}
+			</td>
+			<td>{{ entry.summary|striptags }}</td>
+			<td>{{ entry.itunes_duration }}</td>			
+			<td>
+				<a href="{{ entry.media_content[0].url }}" target="_blank">
+					<img src="{{ entry.image.href|replace('format=1500w', 'format=100w') }}" />
+				</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+	<script>
+		function publishedSorter(a, b){
+			return(new Date(a).getTime() - new Date(b).getTime());
+		}
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
+</body>
+</html>
