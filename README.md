@@ -1,3 +1,3 @@
-# Kleine Boodschap Episodes
+# Kleine Boodschap afleveringen
 
-Searchable overview of all Kleine Boodschap episodes
+Doorzoekbare overview of all Kleine Boodschap afleveringen

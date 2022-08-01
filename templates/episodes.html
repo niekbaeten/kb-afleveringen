@@ -54,37 +54,41 @@
 	>
 	<thead>
 		<tr>
-			<th data-field="episode" data-sortable="true">Episode</th>
-			<th data-field="title">Title</th>
-			<th data-field="subtitle">Subtitle</th>
-			<th data-field="published" data-sortable="true" data-sorter="publishedSorter">Published</th>
-			<th data-field="tags" data-sortable="true">Categories</th>
-			<th data-field="description">Description</th>
-			<th data-field="duration">Duration</th>
+			<th data-field="episode" data-sortable="true">Aflevering</th>
+			<th data-field="title">Titel</th>
+			<th data-field="subtitle">Subtitel</th>
+			<th data-field="published" data-sortable="true" data-sorter="publishedSorter">Gepubliceerd</th>
+			<th data-field="tags" data-sortable="true">Categorieën</th>
+			<th data-field="description">Omschrijving</th>
+			<th data-field="duration" data-sortable="true">Duur</th>
 			<th data-field="media">Media</th>
 		</tr>
 	</thead>
 	<tbody>
-		{% for entry in entries %}
+		{%- for entry in entries -%}
 		<tr>
 			<td>{{ entry.itunes_episode }}</td>
 			<td><a href="{{ entry.link }}" target="_blank">{{ entry.itunes_title }}</a></td>
 			<td>{{ entry.subtitle }}</td>
 			<td>{{ entry.published_parsed | time_struct_to_date_str }}</td>
 			<td>
-				{% for tag in entry.tags %}
+				{%- for tag in entry.tags -%}
 				<span class="badge rounded-pill bg-primary">{{ tag.term }}</span>
-				{% endfor %}
+				{%- endfor -%}
 			</td>
 			<td>{{ entry.summary|striptags }}</td>
-			<td>{{ entry.itunes_duration }}</td>			
+			{%- if entry.itunes_season -%}
+			<td>{{ entry.itunes_season | check_duration_format }}</td>
+			{%- else -%}
+			<td>{{ entry.itunes_duration | check_duration_format }}</td>
+			{%- endif -%}
 			<td>
 				<a href="{{ entry.media_content[0].url }}" target="_blank">
 					<img src="{{ entry.image.href|replace('format=1500w', 'format=100w') }}" />
 				</a>
 			</td>
 		</tr>
-		{% endfor %}
+		{%- endfor -%}
 	</tbody>
 	</table>
 	<script>
