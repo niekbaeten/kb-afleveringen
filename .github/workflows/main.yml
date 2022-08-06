@@ -27,3 +27,10 @@ jobs:
           
       - name: create pull request
         uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: Automated weekly update
+          branch: automated-weekly-update
+          delete-branch: true
+          title: Automated weekly update
+          assignees: niekbaeten
+          reviewers: niekbaeten
