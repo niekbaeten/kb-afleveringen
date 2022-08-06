@@ -1,6 +1,7 @@
 name: kb-afleveringen-update
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 4 * * 1' # runs weekly on Monday at 4:00 UTC
 
