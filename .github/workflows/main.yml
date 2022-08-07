@@ -21,7 +21,6 @@ jobs:
         run: |
           sudo locale-gen nl_NL
           sudo locale-gen nl_NL.UTF-8
-          export LC_ALL="nl_NL.UTF-8"
           sudo dpkg-reconfigure locales
 
       - name: install python packages
