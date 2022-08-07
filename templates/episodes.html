@@ -101,7 +101,10 @@
 	<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/locale/bootstrap-table-nl-NL.min.js"></script>
 	<script>
 		function publishedSorter(a, b) {
-			return(new Date(a).getTime() - new Date(b).getTime())
+			const months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+			a = a.split(',')[1].trim().split(' ')
+			b = b.split(',')[1].trim().split(' ')
+			return(new Date(a[2], months.indexOf(a[1]), a[0]).getTime() - new Date(b[2], months.indexOf(b[1]), b[0]).getTime())
 		}
 		$(function() {
 			let $table = $('#table')
