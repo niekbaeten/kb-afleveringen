@@ -4,7 +4,7 @@ import time
 from jinja2 import Environment, PackageLoader, select_autoescape
 import feedparser
 
-locale.setlocale(locale.LC_ALL,'nl_NL.utf-8')
+locale.setlocale(locale.LC_ALL,'nl_NL.UTF-8')
 
 source = 'https://kleineboodschap.com/afleveringen?format=rss'
 
