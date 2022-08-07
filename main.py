@@ -1,7 +1,10 @@
+import locale
 import time
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 import feedparser
+
+locale.setlocale(locale.LC_ALL,'nl_NL.utf-8')
 
 source = 'https://kleineboodschap.com/afleveringen?format=rss'
 
@@ -12,7 +15,7 @@ env = Environment(
 )
 
 def time_struct_to_date_str(input):
-	return time.strftime('%b %d, %Y', input)	
+	return time.strftime('%A, %d %B %Y', input)	
 env.filters['time_struct_to_date_str'] = time_struct_to_date_str
 
 def check_duration_format(input):

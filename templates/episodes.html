@@ -37,6 +37,7 @@
 	  <h1>Alle <a href="https://kleineboodschap.com/" target="_blank">Kleine Boodschap</a> afleveringen</h1>
 	</div>
 	<table 
+		id="table"
 		data-classes="table table-striped"
 		data-toggle="table"
 		data-buttons-align="left"
@@ -51,6 +52,8 @@
 		data-show-button-text="true"
 		data-thead-classes="table-light"
 		data-buttons-toolbar=".buttons-toolbar"
+		data-locale="nl-NL"
+		data-search-text=""
 	>
 	<thead>
 		<tr>
@@ -90,15 +93,31 @@
 		</tr>
 		{%- endfor -%}
 	</tbody>
-	</table>
-	<script>
-		function publishedSorter(a, b){
-			return(new Date(a).getTime() - new Date(b).getTime());
-		}
-	</script>
+	</table>	
 	<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
 	<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/locale/bootstrap-table-nl-NL.min.js"></script>
+	<script>
+		function publishedSorter(a, b) {
+			return(new Date(a).getTime() - new Date(b).getTime())
+		}
+		$(function() {
+			let $table = $('#table')
+			$table.on('search.bs.table', function(event, searchText) {
+				if (window.history.replaceState) {
+					window.history.replaceState(null, '', '?search=' + searchText)
+				}
+			})
+
+			const params = new URLSearchParams(window.location.search)
+			if (params.has('search')) {				
+				let options = $table.bootstrapTable('getOptions')
+				options.searchText = params.get('search')
+				$table.bootstrapTable('refreshOptions', options)
+			}
+		})
+	</script>
 </body>
 </html>
