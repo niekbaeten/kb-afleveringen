@@ -6,41 +6,46 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css">
 	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/extensions/sticky-header/bootstrap-table-sticky-header.css">
-	<style>
-		.buttons-toolbar {
-			float: left;
-		}
-		.main-title {
-			float: left;
-			vertical-align: center;
-			height: 38px;
-		}
-		.main-title h1 {
-			font-size: 28px;
-			margin: 0 10px;
-		}
-	</style>
+
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-DM0NLDB3V5"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
 	  gtag('js', new Date());
-
 	  gtag('config', 'G-DM0NLDB3V5');
 	</script>
+	<style>
+		h2 {
+			font-family: Georgia, 'Times New Roman', Times, serif;
+			font-weight: bold;
+		}
+		.btn:focus {
+			outline: none;
+			box-shadow: none;
+		}
+	</style>
 </head>
-<body class="m-2">
-	<div class="buttons-toolbar">
-	</div>
-	<div class="main-title">
-	  <h1>Alle <a href="https://kleineboodschap.com/" target="_blank">Kleine Boodschap</a> afleveringen</h1>
-	</div>
+<body class="m-2" style="background-color: #f8f9fa;">
+	<nav id="mainNav" class="navbar navbar-expand-lg" style="background-color: #f8f9fa;">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">
+				<img src="logo.png" width="90" height="90" alt="" class="d-inline-block align-text-middle">
+				<h2 class="d-inline-block">Alle Kleine Boodschap afleveringen</h2>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarToggle">
+				<div class="buttons-toolbar ms-auto"></div>
+			</div>
+		</div>
+	</nav>
 	<table 
-		id="table"
+		id="dataTable"
 		data-classes="table table-striped"
 		data-toggle="table"
-		data-buttons-align="left"
 		data-search="true"
 		data-search-accent-neutralise="true"
 		data-search-align="left"
@@ -51,6 +56,8 @@
 		data-sort-order="desc"
 		data-show-button-text="true"
 		data-thead-classes="table-light"
+		data-buttons="buttons"
+		data-buttons-class="primary"
 		data-buttons-toolbar=".buttons-toolbar"
 		data-locale="nl-NL"
 		data-search-text=""
@@ -86,8 +93,8 @@
 			<td>{{ entry.itunes_duration | check_duration_format }}</td>
 			{%- endif -%}
 			<td>
-				<a href="{{ entry.media_content[0].url }}" target="_blank">
-					<img src="{{ entry.image.href|replace('format=1500w', 'format=100w') }}" />
+				<a href="{{ entry.media_content[0].url }}" class="btn btn-primary" role="button"  target="_blank">
+					<i class="bi bi-play-circle"></i>
 				</a>
 			</td>
 		</tr>
@@ -100,6 +107,38 @@
 	<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
 	<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/locale/bootstrap-table-nl-NL.min.js"></script>
 	<script>
+		function toggleDarkMode() {
+			let toggleButton = $('button[name="btnDarkMode"] i')
+			if (toggleButton.hasClass('bi-moon')) {
+				toggleButton.removeClass('bi-moon').addClass('bi-sun')
+				$('body').addClass('bg-dark')
+				$('thead').addClass('table-dark')
+				$('#dataTable').addClass('table-dark')
+				$('#mainNav').addClass('bg-dark')
+				$('#mainNav a').addClass('text-light')
+			} else {
+				toggleButton.removeClass('bi-sun').addClass('bi-moon')
+				$('body').removeClass('bg-dark')
+				$('thead').removeClass('table-dark')
+				$('#dataTable').removeClass('table-dark')
+				$('#mainNav').removeClass('bg-dark')
+				$('#mainNav a').removeClass('text-light')
+			}
+		}
+		function buttons() {
+			return {
+      			btnDarkMode: {
+					text: '',
+					icon: 'bi-moon',
+					event: function () {
+						toggleDarkMode()
+					},
+					attributes: {
+						title: 'Switch tussen donker/licht thema'
+					}
+				}
+			}
+		}
 		function publishedSorter(a, b) {
 			const months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
 			a = a.split(',')[1].trim().split(' ')
@@ -107,7 +146,7 @@
 			return(new Date(a[2], months.indexOf(a[1]), a[0]).getTime() - new Date(b[2], months.indexOf(b[1]), b[0]).getTime())
 		}
 		$(function() {
-			let $table = $('#table')
+			let $table = $('#dataTable')
 			$table.on('search.bs.table', function(event, searchText) {
 				if (window.history.replaceState) {
 					window.history.replaceState(null, '', '?search=' + searchText)
@@ -119,6 +158,10 @@
 				let options = $table.bootstrapTable('getOptions')
 				options.searchText = params.get('search')
 				$table.bootstrapTable('refreshOptions', options)
+			}
+
+			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    			toggleDarkMode()
 			}
 		})
 	</script>
