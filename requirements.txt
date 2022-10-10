@@ -1,3 +1,4 @@
+beautifulsoup4
 feedparser
 Jinja2==3.1.2
 google-api-python-client

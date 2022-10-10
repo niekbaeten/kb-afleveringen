@@ -1,6 +1,7 @@
 import locale
 import time
 
+from bs4 import BeautifulSoup
 from jinja2 import Environment, PackageLoader, select_autoescape
 import feedparser
 
@@ -23,6 +24,14 @@ def check_duration_format(input):
 	time_struct = time.strptime(input, '%H:%M:%S')
 	return time.strftime('%H:%M:%S', time_struct)
 env.filters['check_duration_format'] = check_duration_format
+
+for entry in feed.entries:
+	entry.show_notes = []
+	if 'Show notes' in entry.summary:
+		entry.summary, show_notes = entry.summary.split('<strong>Show notes</strong>')
+		soup = BeautifulSoup(show_notes, features="html.parser")
+		for a in soup.find_all('a', href=True):
+			entry.show_notes.append({'text': a.contents[0], 'link': a['href']})
 
 template = env.get_template("episodes.html")
 with open('index.html', 'w', encoding='utf-8') as f:

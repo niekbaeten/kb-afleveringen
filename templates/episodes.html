@@ -66,14 +66,14 @@
 	>
 	<thead>
 		<tr>
-			<th data-field="episode" data-sortable="true">Aflevering</th>
-			<th data-field="title">Titel</th>
-			<th data-field="subtitle">Subtitel</th>
-			<th data-field="published" data-sortable="true" data-sorter="publishedSorter">Gepubliceerd</th>
-			<th data-field="tags" data-sortable="true">Categorieën</th>
-			<th data-field="description">Omschrijving</th>
-			<th data-field="duration" data-sortable="true">Duur</th>
-			<th data-field="media">Media</th>
+			<th data-field="episode" data-sortable="true" data-valign="top">Aflevering</th>
+			<th data-field="title" data-valign="top">Titel</th>
+			<th data-field="subtitle" data-valign="top">Subtitel</th>
+			<th data-field="published" data-valign="top" data-sortable="true" data-sorter="publishedSorter">Gepubliceerd</th>
+			<th data-field="tags" data-valign="top" data-sortable="true">Categorieën</th>
+			<th data-field="description" data-valign="top">Omschrijving</th>
+			<th data-field="duration" data-valign="top" data-sortable="true">Duur</th>
+			<th data-field="media" data-valign="top">Media</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -88,14 +88,24 @@
 				<span class="badge rounded-pill bg-primary">{{ tag.term }}</span>
 				{%- endfor -%}
 			</td>
-			<td>{{ entry.summary|striptags }}</td>
+			<td>
+				{{ entry.summary|striptags }}
+				{%- if entry.show_notes -%}
+				<p class="mt-3 mb-0">Show notes:</p>
+				<ul>
+					{%- for note in entry.show_notes -%}
+					<li><a href="{{ note.link }}" target="_blank">{{ note.text }}</a></li>
+					{%- endfor -%}
+				</ul>
+				{%- endif -%}
+			</td>
 			{%- if entry.itunes_season -%}
 			<td>{{ entry.itunes_season | check_duration_format }}</td>
 			{%- else -%}
 			<td>{{ entry.itunes_duration | check_duration_format }}</td>
 			{%- endif -%}
 			<td>
-				<a href="{{ entry.media_content[0].url }}" class="btn btn-primary" role="button"  target="_blank">
+				<a href="{{ entry.media_content[0].url }}" class="btn btn-primary py-0 px-4" role="button" target="_blank">
 					<i class="bi bi-play-circle"></i>
 				</a>
 			</td>
