@@ -79,33 +79,29 @@
 	<tbody>
 		{%- for entry in entries -%}
 		<tr>
-			<td>{{ entry.itunes_episode }}</td>
-			<td><a href="{{ entry.link }}" target="_blank">{{ entry.itunes_title }}</a></td>
+			<td>{{ entry.id }}</td>
+			<td><a href="{{ entry.link }}" target="_blank">{{ entry.title }}</a></td>
 			<td>{{ entry.subtitle }}</td>
-			<td>{{ entry.published_parsed | time_struct_to_date_str }}</td>
+			<td>{{ entry.published }}</td>
 			<td>
 				{%- for tag in entry.tags -%}
-				<span class="badge rounded-pill bg-primary">{{ tag.term }}</span>
+				<span class="badge rounded-pill bg-primary">{{ tag }}</span>
 				{%- endfor -%}
 			</td>
 			<td>
 				<div>{{ entry.summary|striptags }}</div>
 				{%- if entry.show_notes -%}
-				<button class="btn btn-primary btn-sm d-block my-1" type="button" data-bs-toggle="collapse" data-bs-target="#showNotes{{ entry.itunes_episode }}" aria-expanded="false" aria-controls="showNotes{{ entry.itunes_episode }}">show notes</button>
-				<ul class="collapse" id="showNotes{{ entry.itunes_episode }}">
+				<button class="btn btn-primary btn-sm d-block my-1" type="button" data-bs-toggle="collapse" data-bs-target="#showNotes{{ entry.id }}" aria-expanded="false" aria-controls="showNotes{{ entry.id }}">show notes</button>
+				<ul class="collapse" id="showNotes{{ entry.id }}">
 					{%- for note in entry.show_notes -%}
 					<li><a href="{{ note.link }}" target="_blank">{{ note.text }}</a></li>
 					{%- endfor -%}
 				</ul>
 				{%- endif -%}
 			</td>
-			{%- if entry.itunes_season -%}
-			<td>{{ entry.itunes_season | check_duration_format }}</td>
-			{%- else -%}
-			<td>{{ entry.itunes_duration | check_duration_format }}</td>
-			{%- endif -%}
+			<td>{{ entry.duration }}</td>
 			<td>
-				<a href="{{ entry.media_content[0].url }}" class="btn btn-primary py-0 px-4" role="button" target="_blank">
+				<a href="{{ entry.media_url }}" class="btn btn-primary py-0 px-4" role="button" target="_blank">
 					<i class="bi bi-play-circle"></i>
 				</a>
 			</td>
