@@ -1,5 +1,136 @@
 [
   {
+    "id": 306,
+    "link": "https://kleineboodschap.com/afleveringen/2022/12/5/306-een-kwakje-spuitbeton",
+    "title": "Een kwakje spuitbeton",
+    "subtitle": "Ken je die grap van die 2 kerels die een pannenkoek gingen eten in de Efteling?",
+    "published": "maandag, 05 december 2022",
+    "tags": [
+      "Nieuws"
+    ],
+    "summary": "Het is december en dus is de Winter Efteling weer in volle gang! In deze nieuwsaflevering delen we onze eerste ervaringen met deze nieuwe editie en watertanden we bij een culinair hoogtepunt. Ook staan we stil bij onze eerste kennismaking met Virginie en Otto Charlatan en alle andere ontwikkelingen rond Danse Macabre, knorren we wat over Bouwmeester Big \u00e9n blikken we vooruit op een bijzondere tentoonstelling, prijzen en openingstijden en het geplande onderhoud in 2023.",
+    "show_notes": [
+      {
+        "text": "Missiehuis Goirle is klaar om zeventig asielzoekers op te vangen | Tilburg e.o. | ",
+        "link": "https://www.bd.nl/tilburg-e-o/missiehuis-goirle-is-klaar-om-zeventig-asielzoekers-op-te-vangen~a7c34533/"
+      },
+      {
+        "text": "bd.nl",
+        "link": "http://bd.nl"
+      },
+      {
+        "text": "Kleine Boodschap op Twitter: \"Wil jij het tragische verhaal achter deze pannenkoeken horen?\"",
+        "link": "https://twitter.com/KBoodschap/status/1599017273183772672?t=sAf5oUfBxyFb_ekht8lM6A&s=03"
+      },
+      {
+        "text": "De lekkerste winterse koude en warme dranken!",
+        "link": "https://www.efteling.com/nl/blog/eten-en-drinken/20221123-winterse-warme-en-koude-dranken"
+      },
+      {
+        "text": "Nieuwe ijskristal-souvenirlijn Winter Efteling",
+        "link": "https://www.efteling.com/nl/blog/souvenirs/20221129-winter-efteling-souvenirlijn-ijskristal"
+      },
+      {
+        "text": "Ontmoet de familie Charlatan in de Efteling",
+        "link": "https://www.efteling.com/nl/blog/nieuws/20221118-ontmoet-famillie-charlatan-in-de-efteling"
+      },
+      {
+        "text": "Roderick op Twitter: \"Het verhaal van Danse Macabre is voor mij nu vrij onduidelijk, maar ik denk toch dat ik een gok ga wagen om te kijken of ik er iets van begrijp.\"",
+        "link": "https://twitter.com/bosgeestje/status/1594017664162226176"
+      },
+      {
+        "text": "Thijs op Twitter: \"Ik zie nu pas dat exact dit stukje met zwarte streepjes te zien is op de gelekte foto van @Eftelist\"",
+        "link": "https://twitter.com/ParkThijs/status/1596208062389526536"
+      },
+      {
+        "text": "Giertje64 op Twitter: \"Opvallend, de witte muur in de kelder is pas tijdens de afbraak erin gemetseld\"",
+        "link": "https://twitter.com/GypsRoccus/status/1596465478171779073"
+      },
+      {
+        "text": "Nick Ringelberg op Twitter: \"Twee leuke dagen gehad in en rond de #efteling!\"",
+        "link": "https://twitter.com/RingelbergNick/status/1590449950584115200"
+      },
+      {
+        "text": "Tentoonstelling over Efteling in het Noordbrabants Museum",
+        "link": "https://www.efteling.com/nl/blog/nieuws/20221201-efteling-tentoonstelling-in-het-noordbrabants-museum"
+      },
+      {
+        "text": "Paddenstoelfoto | Het Noordbrabants Museum",
+        "link": "https://www.hetnoordbrabantsmuseum.nl/paddenstoel"
+      },
+      {
+        "text": "Openingstijden en prijzen t/m 7 mei 2023 bekend",
+        "link": "https://www.efteling.com/nl/blog/nieuws/20221201-reserveer-tickets-tot-en-met-7-mei-2023"
+      },
+      {
+        "text": "Efteling openingstijden & verwachte drukte",
+        "link": "https://www.efteling.com/nl/park/openingstijden"
+      },
+      {
+        "text": "Toegangsprijzen - Efteling",
+        "link": "https://www.efteling.com/nl/park/informatie/toegangsprijzen"
+      },
+      {
+        "text": "Gesloten attracties - Efteling",
+        "link": "https://www.efteling.com/nl/park/informatie/in-onderhoud"
+      },
+      {
+        "text": "Cindy op Twitter: \"Ijzeren baan voor #JorisEnDeDraak #JEDD #WinterEfteling #Efteling\"",
+        "link": "https://twitter.com/cindy_ve/status/1597234136699502593"
+      },
+      {
+        "text": "Niels Kooyman op Twitter: \"BREAKING! Efteling past naam aan Villa Volta. #efteling\"",
+        "link": "https://twitter.com/NielsKooyman/status/1597903244956930048"
+      },
+      {
+        "text": "Efteling komt moeder van zieke peuter pas tegemoet na ophef op Facebook - Looopings",
+        "link": "https://www.looopings.nl/weblog/21311/Efteling-komt-moeder-van-zieke-peuter-pas-tegemoet-na-ophef-op-Facebook.html"
+      },
+      {
+        "text": "Opnieuw streep door schaatsbaan in centrum Kaatsheuvel: \"geluid\" nekt evenement | Waalwijk, Heusden e.o. | ",
+        "link": "https://www.bd.nl/waalwijk-heusden-e-o/opnieuw-streep-door-schaatsbaan-in-centrum-kaatsheuvel-geluid-nekt-evenement~aa866fa0/"
+      },
+      {
+        "text": "bd.nl",
+        "link": "http://bd.nl"
+      },
+      {
+        "text": "Weer geen ijsbaan in Kaatsheuvel, ook de gemeente baalt: \"Hebben evenement echt niet kapot willen maken\" | ",
+        "link": "https://www.bd.nl/waalwijk-heusden-e-o/weer-geen-ijsbaan-in-kaatsheuvel-ook-de-gemeente-baalt-hebben-evenement-echt-niet-kapot-willen-maken~afbd3946/"
+      },
+      {
+        "text": "bd.nl",
+        "link": "http://bd.nl"
+      },
+      {
+        "text": "De Wintertuin - Spoorpark Tilburg",
+        "link": "https://spoorparktilburg.nl/activiteit/de-wintertuin/"
+      },
+      {
+        "text": "Blauwe zone op parkeerplaats Albert Heijn mag niet: gemeente wil dat blauwe lijnen worden verwijderd | Efteling | ",
+        "link": "https://www.bd.nl/waalwijk-heusden-e-o/blauwe-zone-op-parkeerplaats-albert-heijn-mag-niet-gemeente-wil-dat-blauwe-lijnen-worden-verwijderd~a417b7aa/"
+      },
+      {
+        "text": "bd.nl",
+        "link": "http://bd.nl"
+      },
+      {
+        "text": "Pukkemuk krijgt van provincie w\u00e9l lening voor uitbreiding: 10 miljoen euro | Tilburg e.o. | ",
+        "link": "https://www.bd.nl/tilburg-e-o/pukkemuk-krijgt-van-provincie-wel-lening-voor-uitbreiding-10-miljoen-euro~a919c463/"
+      },
+      {
+        "text": "bd.nl",
+        "link": "http://bd.nl"
+      },
+      {
+        "text": "Dark Tourist | Netflix",
+        "link": "https://www.netflix.com/nl/title/80189791"
+      }
+    ],
+    "duration": "02:02:00",
+    "media_url": "https://aphid.fireside.fm/d/1437767933/74e219a8-b6f0-47b9-93cf-5431d0ec5d1e/950aa464-b582-4e92-b2de-64ad5a5d8442.mp3"
+  },
+  {
     "id": 305,
     "link": "https://kleineboodschap.com/afleveringen/2022/11/28/305-de-efteling-als-verteller-van-sprookjes-met-moniek-hover",
     "title": "De Efteling als verteller van sprookjes met Moniek Hover",
