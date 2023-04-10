@@ -38,11 +38,19 @@ def main():
 		# force leading zeros which are missing sometime
 		time_struct = time.strptime(value, '%H:%M:%S')
 		return time.strftime('%H:%M:%S', time_struct)
+	
+	def handle_missing_properties(entry):
+		if entry.guid == '5a3d63340abd044bd31de06d:5a3e53bc0852297f08fc1ffd:6428356f9499a72eb56e5fcd':
+			# episode 324 is missing these properties
+			entry.itunes_episode = '324'
+			entry.duration = '01:52:53'
 
 	with open('episodes.json', 'r') as f:
 		episodes = json.load(f)
 
 	for entry in feed.entries:
+		handle_missing_properties(entry)
+
 		if any(episode['id'] == int(entry.itunes_episode) for episode in episodes):
 			# if the episode is already in the json, don't touch it
 			continue
