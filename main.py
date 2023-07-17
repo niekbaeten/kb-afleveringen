@@ -48,6 +48,10 @@ def main():
 			# episode 338 is missing these properties
 			entry.itunes_episode = '338'
 			entry.itunes_duration = '02:20:14'
+		elif entry.guid == '5a3d63340abd044bd31de06d:5a3e53bc0852297f08fc1ffd:64b41a8eb5782a0bf879c12c':
+			# episode 341 is missing these properties
+			entry.itunes_episode = '341'
+			entry.itunes_duration = '01:46:25'
 
 	with open('episodes.json', 'r') as f:
 		episodes = json.load(f)
