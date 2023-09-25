@@ -52,6 +52,9 @@ def main():
 			# episode 341 is missing these properties
 			entry.itunes_episode = '341'
 			entry.itunes_duration = '01:46:25'
+		elif entry.guid == '5a3d63340abd044bd31de06d:5a3e53bc0852297f08fc1ffd:650d6229d818f132ab9bc32a':
+			# episode 351 is missing these properties
+			entry.subtitle = 'Pieckwashing'
 
 	with open('episodes.json', 'r') as f:
 		episodes = json.load(f)
