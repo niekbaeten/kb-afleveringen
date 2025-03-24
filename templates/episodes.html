@@ -70,7 +70,6 @@
 			<th data-field="title" data-valign="top">Titel</th>
 			<th data-field="subtitle" data-valign="top">Subtitel</th>
 			<th data-field="published" data-valign="top" data-sortable="true" data-sorter="publishedSorter">Gepubliceerd</th>
-			<th data-field="tags" data-valign="top" data-sortable="true">Categorieën</th>
 			<th data-field="description" data-valign="top">Omschrijving</th>
 			<th data-field="duration" data-valign="top" data-sortable="true">Duur</th>
 			<th data-field="media" data-valign="top">Media</th>
@@ -83,11 +82,6 @@
 			<td><a href="{{ entry.link }}" target="_blank">{{ entry.title }}</a></td>
 			<td>{{ entry.subtitle }}</td>
 			<td>{{ entry.published }}</td>
-			<td>
-				{%- for tag in entry.tags -%}
-				<span class="badge rounded-pill bg-primary">{{ tag }}</span>
-				{%- endfor -%}
-			</td>
 			<td>
 				<div>{{ entry.summary|striptags }}</div>
 				{%- if entry.show_notes -%}
