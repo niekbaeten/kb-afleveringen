@@ -26,7 +26,7 @@ def main():
 			show_notes_tag = '<strong>Show notes</strong>'
 			show_notes_count = summary.count(show_notes_tag)
 			if show_notes_count > 1:
-				summary.replace(show_notes_tag, '', show_notes_count - 1)
+				summary = summary.replace(show_notes_tag, '', show_notes_count - 1)
 			summary, notes = summary.split(show_notes_tag)
 			soup = BeautifulSoup(notes, features="html.parser")
 			for a in soup.find_all('a', href=True):
