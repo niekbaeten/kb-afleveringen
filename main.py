@@ -23,7 +23,11 @@ def main():
 		summary = entry.summary
 		show_notes = []
 		if 'Show notes' in summary:
-			summary, notes = summary.split('<strong>Show notes</strong>')
+			show_notes_tag = '<strong>Show notes</strong>'
+			show_notes_count = summary.count(show_notes_tag)
+			if show_notes_count > 1:
+				summary.replace(show_notes_tag, '', show_notes_count - 1)
+			summary, notes = summary.split(show_notes_tag)
 			soup = BeautifulSoup(notes, features="html.parser")
 			for a in soup.find_all('a', href=True):
 				show_notes.append({'text': a.contents[0].string, 'link': a['href']})
