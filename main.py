@@ -30,7 +30,9 @@ def main():
 			summary, notes = summary.split(show_notes_tag)
 			soup = BeautifulSoup(notes, features="html.parser")
 			for a in soup.find_all('a', href=True):
-				show_notes.append({'text': a.contents[0].string, 'link': a['href']})
+				# Remove these 2 links that show up solo many times in the feed for whatever reason
+				if a.contents[0].string.lower() not in ['ad.nl', 'bd.nl']:
+					show_notes.append({'text': a.contents[0].string, 'link': a['href']})
 		return Markup(summary).striptags(), show_notes
 
 	def handle_duration(entry):
@@ -46,7 +48,7 @@ def main():
 			time_struct = time.strptime(value, '%M:%S')
 		return time.strftime('%H:%M:%S', time_struct)
 
-	with open('episodes.json', 'r') as f:
+	with open('episodes.json', 'r', encoding='utf-8') as f:
 		episodes = json.load(f)
 
 	for entry in feed.entries:
@@ -70,8 +72,8 @@ def main():
 
 	episodes = sorted(episodes, key=itemgetter('id'), reverse=True)
 
-	with open('episodes.json', 'w') as f:
-		json.dump(episodes, f, indent=2)
+	with open('episodes.json', 'w', encoding='utf-8') as f:
+		json.dump(episodes, f, indent=2, ensure_ascii=False)
 
 	template = env.get_template("episodes.html")
 	with open('index.html', 'w', encoding='utf-8') as f:
